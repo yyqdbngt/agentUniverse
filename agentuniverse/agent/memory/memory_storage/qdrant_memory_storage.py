@@ -115,6 +115,7 @@ class QdrantMemoryStorage(MemoryStorage):
         return Filter(must=must_conditions)
 
     def delete(self, session_id: str = None, agent_id: str = None, **kwargs) -> None:
+        """Delete."""
         client = self._ensure_client()
         filt = self._build_filter(session_id=session_id, agent_id=agent_id, source=None, type_value=kwargs.get("type"))
         if not filt:
