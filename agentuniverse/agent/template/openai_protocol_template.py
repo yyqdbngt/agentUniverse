@@ -39,6 +39,7 @@ class OpenAIProtocolTemplate(AgentTemplate):
         return self.parse_openai_protocol_output(output_object)
 
     def parse_openai_agent_input(self, agent_input):
+        """Parse openai agent input."""
         for key in self.openai_protocol_input_keys():
             if key not in agent_input:
                 raise ValueError(f"{key} is not in agent input")
