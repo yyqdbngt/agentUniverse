@@ -21,6 +21,7 @@ class PeerWorkPattern(WorkPattern):
     reviewing: ReviewingAgentTemplate = None
 
     def invoke(self, input_object: InputObject, work_pattern_input: dict, **kwargs) -> dict:
+        """Invoke."""
         self._validate_work_pattern_members()
 
         peer_results = list()
