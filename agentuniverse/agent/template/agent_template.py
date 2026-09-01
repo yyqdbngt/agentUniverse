@@ -32,6 +32,7 @@ class AgentTemplate(Agent, ABC):
     conversation_memory_name: Optional[str] = None
 
     def execute(self, input_object: InputObject, agent_input: dict, **kwargs) -> dict:
+        """Execute."""
         memory: Memory = self.process_memory(agent_input, **kwargs)
         llm: LLM = self.process_llm(**kwargs)
         prompt: Prompt = self.process_prompt(agent_input, **kwargs)
