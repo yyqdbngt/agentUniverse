@@ -100,6 +100,7 @@ class WenXinLLM(LLM):
         return self.agenerate_stream_result(chat_completion)
 
     def max_context_length(self) -> int:
+        """Max Context Length."""
         if super().max_context_length():
             return super().max_context_length()
         res = self._new_client().get_model_info(self.model_name)
