@@ -95,6 +95,7 @@ class Memory(ComponentBase):
         return []
 
     def prune(self, memories: List[Message]) -> List[Message]:
+        """Prune."""
         if not memories:
             return []
         new_memories = memories[:]
