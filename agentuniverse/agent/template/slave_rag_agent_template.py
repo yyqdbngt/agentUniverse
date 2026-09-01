@@ -24,6 +24,7 @@ from agentuniverse.base.context.context_archive_utils import get_current_context
 class SlaveRagAgentTemplate(AgentTemplate):
 
     def input_keys(self) -> list[str]:
+        """Input Keys."""
         return ['prompt_name', 'prompt_params']
 
     def output_keys(self) -> list[str]:
