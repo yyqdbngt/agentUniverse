@@ -44,6 +44,7 @@ class ReaderManager(ComponentManagerBase[Reader]):
     def get_file_default_reader(self,
                                 file_type: str,
                                 new_instance: bool = False) -> Reader | None:
+        """Get file default reader."""
         if file_type in self.DEFAULT_READER:
             return self.get_instance_obj(self.DEFAULT_READER[file_type])
         else:
