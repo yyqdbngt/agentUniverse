@@ -42,6 +42,7 @@ class FunctionCall(BaseModel):
 
 
 def prune_none(obj):
+    """Prune None."""
     if isinstance(obj, dict):
         return {k: prune_none(v) for k, v in obj.items() if v is not None}
 
