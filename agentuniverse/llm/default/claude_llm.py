@@ -106,6 +106,7 @@ class ClaudeLLM(LLM):
 
     @staticmethod
     def parse_result(data):
+        """Parse result."""
         text = data.content[0].text
         if not text:
             return
