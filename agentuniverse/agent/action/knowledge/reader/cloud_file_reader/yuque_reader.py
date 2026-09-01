@@ -95,6 +95,7 @@ class YuqueReader(Reader):
         md = data.get('sourcecode', '')
         # Process image references inline
         def repl(m):
+            """Repl."""
             src = m.group(1)
             return f'![]({src})'
         return re.sub(r'!\[.*?\]\((.*?)\)', repl, md)
