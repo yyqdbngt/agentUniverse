@@ -22,6 +22,7 @@ class BaichuanOfficialLLMChannel(LLMChannel):
     channel_api_base: Optional[str] = "https://api.baichuan-ai.com/v1"
 
     def max_context_length(self) -> int:
+        """Max Context Length."""
         if super().max_context_length():
             return super().max_context_length()
         return BAICHUAN_MAX_CONTEXT_LENGTH.get(self.channel_model_name, 8000)
