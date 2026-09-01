@@ -49,6 +49,7 @@ class WorkflowAgent(Agent):
         return agent_result
 
     def execute(self, input_object: InputObject, agent_input: dict) -> dict:
+        """Execute."""
         workflow: Workflow = WorkflowManager().get_instance_obj(self.workflow_id)
         # build and run workflow
         if not workflow or workflow.graph_config is None:
