@@ -183,6 +183,7 @@ class LangchainOpenAIStyleInstance(ChatOpenAI):
 
     @staticmethod
     def as_langchain_chunk(stream, run_manager=None):
+        """As Langchain Chunk."""
         default_chunk_class = AIMessageChunk
         for llm_result in stream:
             chunk = llm_result.raw
