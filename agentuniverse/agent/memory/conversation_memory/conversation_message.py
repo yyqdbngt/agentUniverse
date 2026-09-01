@@ -90,6 +90,7 @@ class ConversationMessage(Message):
 
     @classmethod
     def from_message(cls, message: Message, session_id: str):
+        """From Message."""
         if not message.metadata:
             message.metadata = {}
         message.metadata['prefix'] = '之前对话的摘要：' if message.type == 'summarize' else ''
