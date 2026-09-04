@@ -14,7 +14,11 @@ from agentuniverse.base.agentuniverse import AgentUniverse
 
 
 class WorkflowAgentsTest(unittest.TestCase):
-    """Test cases for the workflow demo agent."""
+    """Test cases for the workflow demo agent.
+
+    Exercises the ``demo_workflow_agent`` registered by the workflow agent
+    sample app through the AgentManager public API.
+    """
 
     def setUp(self) -> None:
         """Start the AgentUniverse runtime for the workflow demo app.
@@ -28,7 +32,8 @@ class WorkflowAgentsTest(unittest.TestCase):
         """Run the demo workflow agent and print its output.
 
         Fetches the ``demo_workflow_agent`` instance, runs it with a sample
-        question and prints the 'output' field of the resulting object.
+        question and prints the 'output' field of the returned OutputObject
+        so the workflow execution result can be inspected manually.
         """
         instance: Agent = AgentManager().get_instance_obj('demo_workflow_agent')
         output_object: OutputObject = instance.run(input="姚明是谁？")
