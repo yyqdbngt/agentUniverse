@@ -52,8 +52,7 @@ class TestProcessAgentLlmConfig:
     def test_existing_llm_name_is_preserved(self):
         profile = {"llm_model": {"name": "gpt"}}
         configer = _StubDefaultLLMConfiger(default_llm="default")
-        result = process_agent_llm_config("agent_a", profile, configer)
-        assert result == {"llm_model": {"name": "gpt"}}
+        assert process_agent_llm_config("agent_a", profile, configer) == profile
 
     def test_default_llm_is_applied_when_name_missing(self):
         configer = _StubDefaultLLMConfiger(default_llm="default-llm")
@@ -62,8 +61,7 @@ class TestProcessAgentLlmConfig:
 
     def test_no_default_llm_leaves_empty_model_config(self):
         configer = _StubDefaultLLMConfiger(default_llm=None)
-        result = process_agent_llm_config("agent_a", {}, configer)
-        assert result == {"llm_model": {}}
+        assert process_agent_llm_config("agent_a", {}, configer) == {"llm_model": {}}
 
 
 class TestAssembleMemory:
@@ -91,9 +89,10 @@ class TestAssembleMemory:
 
     def test_assemble_memory_output_appends_current_message(self):
         memory = _StubMemory(messages=[_human_message("history")])
-        agent_input = {"agent_id": "test-agent"}
         history = [_human_message("earlier")]
-        result = assemble_memory_output(memory, agent_input, "current answer", "source-1", history)
+        result = assemble_memory_output(
+            memory, {"agent_id": "test-agent"}, "current answer", "source-1", history
+        )
         assert len(result) == 2
         assert result[-1].content == "current answer"
         assert result[-1].source == "source-1"
